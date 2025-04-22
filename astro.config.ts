@@ -33,10 +33,10 @@ export default defineConfig({
                 }
             },
             giscus: {
-                repository: 'louisescher/spectre',
-                repositoryId: 'R_kgDONjm3ig',
+                repository: 'kimypham/kimypham.github.io',
+                repositoryId: 'R_kgDOOaubUw',
                 category: 'General',
-                categoryId: 'DIC_kwDONjm3is4ClmBF',
+                categoryId: 'DIC_kwDOOaubU84CpWNG',
                 mapping: 'pathname',
                 strict: true,
                 reactionsEnabled: true,
