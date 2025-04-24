@@ -1,19 +1,19 @@
 [
-  {
-    "id": 1,
-    "icon": {
-      "type": "lucide",
-      "name": "cake"
+    {
+        "id": 1,
+        "icon": {
+            "type": "lucide",
+            "name": "briefcase-business"
+        },
+        "text": "Frontend Software Engineer @ NAB"
     },
-    "text": "1 year old"
-  },
-  {
-    "id": 2,
-    "icon": {
-      "type": "lucide",
-      "name": "earth"
-    },
-    "type": "lucide",
-    "text": "Made in Germany"
-  }
+    {
+        "id": 2,
+        "icon": {
+            "type": "lucide",
+            "name": "map-pin"
+        },
+        "type": "lucide",
+        "text": "Melbourne, Australia"
+    }
 ]

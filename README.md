@@ -1,26 +1,31 @@
-![Spectre, a terminal-inspired theme for Astro.](./images/README.png)
+# Kim Pham's portfolio 💫
 
-Spectre is a terminal-inspired theme for Astro, built using TypeScript and Astro.
+This portfolio was built using TypeScript and Astro, inspired by Louis Escher's [Spectre theme](https://github.com/louisescher/spectre).
 
-## Getting Started
+Live demo! ➡️ https://kimypham.github.io
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/louisescher/spectre/tree/main)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/louisescher/spectre/tree/main)
+## 🚀 Getting Started
 
-Alternatively, you can create a new Astro project with Spectre like this:
+1. Clone the repo:
 
-```bash
-# yarn
-yarn create astro@latest -- --template louisescher/spectre
-
-# pnpm
-pnpm create astro@latest --template louisescher/spectre
-
-# yarn
-yarn create astro --template louisescher/spectre
+```
+git clone https://github.com/kimypham/kimypham.github.io.git
+cd kimypham.github.io
 ```
 
-## Features
+2. Install dependencies:
+
+```
+yarn install
+```
+
+3. Run the app locally:
+
+```
+yarn dev
+```
+
+## ✨ Features
 
 - 100 / 100 Lighthouse performance
 - Responsive for all screen sizes
@@ -30,13 +35,4 @@ yarn create astro --template louisescher/spectre
 - Markdown / MDX Support
 - Builds on content collections
 - Search powered by [pagefind](https://pagefind.app)
-- Comments powered by [giscus](https://giscus.app) (can be turned off)
-- More!
-
-## Curious?
-
-Head over to [the preview page](https://spectre.louisescher.dev) to find out more!
-
-### Spectre Integration
-
-If you want to know more about how the custom integration that is used in the `astro.config.ts` file works, head over to the [integration's own README](https://github.com/louisescher/spectre/tree/master/package)!
+- Comments powered by [giscus](https://giscus.app)
