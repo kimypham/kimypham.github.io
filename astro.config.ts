@@ -5,7 +5,6 @@ import sitemap from "@astrojs/sitemap";
 import expressiveCode from "astro-expressive-code";
 import spectre from "./package/src";
 
-import { spectreDark } from "./src/ec-theme";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,7 +12,7 @@ export default defineConfig({
     output: "static",
     integrations: [
         expressiveCode({
-            themes: [spectreDark]
+            themes: ['catppuccin-macchiato']
         }),
         mdx(),
         sitemap(),

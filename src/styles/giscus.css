@@ -44,7 +44,7 @@ main {
     --color-btn-active-bg: hsl(212deg 12% 18% / 50%);
     --color-btn-active-border: #6e7681;
     --color-btn-selected-bg: rgb(51 51 51 / 50%);
-    --color-btn-primary-text: #fff;
+    --color-btn-primary-text: #ccdd6f4;
     --color-btn-primary-bg: #8c5cf5;
     --color-btn-primary-border: rgb(240 246 252 / 10%);
     --color-btn-primary-shadow: 0 0 transparent;
@@ -60,7 +60,7 @@ main {
     --color-segmented-control-bg: rgb(110 110 110 / 10%);
     --color-segmented-control-button-bg: transparent;
     --color-segmented-control-button-selected-border: #6b6b6b;
-    --color-fg-default: #ffffff;
+    --color-fg-default: #ccdd6f4;
     --color-fg-muted: #c7c7c7;
     --color-fg-subtle: #484848;
     --color-canvas-default: transparent;
@@ -89,6 +89,7 @@ main {
     /*! Extensions from @primer/css/alerts/flash.scss */
     --color-social-reaction-bg-hover: var(--color-scale-gray-7);
     --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-8);
+    color: red
 }
 
 main .pagination-loader-container {

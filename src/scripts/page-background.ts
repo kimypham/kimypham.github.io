@@ -65,11 +65,8 @@ class PageBackground {
         overlayCanvas.width = this.width;
         overlayCanvas.height = this.height;
 
-        // Set the primary color to the first color in the theme
-        this.primaryRgb = window
-            .getComputedStyle(document.documentElement)
-            .getPropertyValue("--primary-rgb")
-            .trim();
+        // Set the primary color
+        this.primaryRgb = "249, 226, 175"
 
         this.initBackground();
 

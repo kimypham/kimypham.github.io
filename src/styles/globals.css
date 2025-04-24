@@ -1,7 +1,23 @@
 :root {
-    --primary: rgb(92, 212, 245);
+    --darkest-purple: #11111b;
+    --darker-purple: #181825;
+    --dark-purple: #1e1e2e;
+    --white: #cdd6f4;
+    --grey: #7f849c;
+    --grey2: #45475a;
+    --dark-grey:#313244;
+    --green: #a6e3a1;
+    --yellow: #f9e2af;
+    --orange: #fab387;
+    --red: #f38ba8;
+    --purple: #cba6f7;
+    --pink: #f5c2e7;
+    --blue: #89b4fa;
+    --teal: #94e2d5;
+
+    --primary: var(--blue);
     /* Needed for some hover effects. This is just the R, G and B values of the hex color above */
-    --primary-rgb: 140, 92, 245;
+    --primary-rgb: 125, 165, 229;
     /* Used for links */
     --primary-light: #a277ff;
     --primary-lightest: #c2a8fd;
@@ -94,8 +110,8 @@ main {
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
-    border: 1px solid #353535;
-    color: #ffffff;
+    border: 1px solid var(--grey2);
+    color: var(--white);
     text-decoration: none;
     transition:
         background-color 0.15s ease,
@@ -106,7 +122,7 @@ main {
 .post-container:focus-visible {
     background-color: rgba(var(--primary-rgb), 0.125);
     border: 1px solid var(--primary);
-    color: white;
+    color: var(--white);
     text-decoration: none;
 }
 
@@ -125,7 +141,7 @@ main {
 }
 
 .post-date {
-    color: #c7c7c7;
+    color: var(--grey);
 }
 
 .text-glow {
@@ -134,13 +150,13 @@ main {
 }
 
 .block-link {
-    color: white;
+    color: var(--white);
     padding: 0.25rem 0.5rem;
 }
 
 .block-link:hover,
 .block-link:focus-visible {
-    color: white;
+    color: var(--white);
     background-color: var(--primary);
     text-decoration: none;
     outline: none;

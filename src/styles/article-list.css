@@ -23,18 +23,18 @@
 
 .blog-tag {
     padding: 0.25rem 0.5rem;
-    background: #252525;
-    color: white;
+    background: var(--dark-grey);
+    color: var(--white);
     text-decoration: none;
 }
 
 .blog-tag:hover,
 .blog-tag:focus-visible {
-    background: #353535;
-    color: white;
+    background: var(--grey2);
     text-decoration: none;
 }
 
 .blog-tag.active {
     background: var(--primary);
+    color: var(--darkest-purple);
 }

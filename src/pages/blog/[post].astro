@@ -171,12 +171,12 @@ const { Content, headings } = await render(post);
     }
 
     .toc-card ol li a:hover {
-        color: white;
+        color: var(--white);
         text-decoration: none;
     }
 
     .toc-card ol li a.active {
-        color: white;
+        color: var(--white);
         background: var(--primary);
     }
 
@@ -197,7 +197,7 @@ const { Content, headings } = await render(post);
     }
 
     .comments * {
-        border-color: #353535 !important;
+        border-color: var(--dark-purple) !important;
     }
 
     @media screen and (max-width: 640px) {
