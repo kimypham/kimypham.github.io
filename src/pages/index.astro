@@ -1,13 +1,10 @@
 ---
 import '../styles/index.css';
 
-import ProfilePicture from '../assets/pfp.png';
 
 import { getCollection, getEntry, render } from 'astro:content';
 import { name, openGraph } from 'spectre:globals';
-import Card from '../components/Card.astro';
 import Icon from '../components/Icon.astro';
-import ImageGlow from '../components/ImageGlow.astro';
 import Layout from '../layouts/Layout.astro';
 
 const [posts, projects, about, quickWorkExperience, quickInfo, socials] =
@@ -29,7 +26,64 @@ const { Content: About } = await render(about!);
     description={openGraph.home.description}
     pagefindIgnore
 >
-    <div class="layout-grid-left" slot="left">
+    <div class="center-container" slot="center">
+        <h1>Hi there! I'm<br><span class="text-glow">Kim Pham</span></h1>
+        <p style="font-size: 1.25em;">
+            I'm a <span class="text-glow">frontend software engineer</span> from Melbourne, Australia.<br/>
+            I love building delightful user experiences with design and code.
+        </p>
+        <div class="socials-list">
+            {
+                socials.map((item) => (
+                    <a href={item.data.link} style="text-decoration: none;">
+                        <div class="socials-link">
+                            <Icon
+                                type={item.data.icon.type}
+                                name={item.data.icon.name as any}
+                                width={24}
+                                height={24}
+                                class="glow-icon"
+                            />
+                            <span>{item.data.text}</span>
+                        </div>
+                    </a>
+                ))
+            }
+        </div>
+        <!-- <div class="header-container">
+            <Icon
+                type="lucide"
+                name="briefcase-business"
+                width={24}
+                height={24}
+                class="glow-icon"
+            />
+            <h2>Work Experience</h2>
+            <a href={`/work`}>See more </a>
+        </div> -->
+        <!-- <div class="">
+            {
+                quickWorkExperience.reverse().map((entry) => (
+                    <div class="work-experience-entry">
+                        <span class="work-experience-duration">
+                            {entry.data.duration}
+                        </span>
+                        <h3 class="work-experience-company">
+                            {entry.data.company}
+                        </h3>
+                        <span class="work-experience-role">
+                            {entry.data.title}
+                        </span>
+                        <p class="work-experience-desc">
+                            {entry.data.description}
+                        </p>
+                    </div>
+                ))
+            }
+        </div> -->
+    </div>
+
+    <!-- <div class="layout-grid-left" slot="left">
         <Card class="flex-col-card">
             <ImageGlow
                 quality={100}
@@ -200,5 +254,67 @@ const { Content: About } = await render(about!);
                 }
             </div>
         </Card>
-    </div>
+    </div> -->
 </Layout>
+<style>
+    .center-container {
+        display: flex;
+        height: 80vh;
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* width: 100%; */
+        /* text-align: center; */
+        flex-direction: column;
+    }
+
+    .center-container h1 {
+        font-size: 1.5em;
+    }
+
+    h1 .text-glow {
+        font-size: 3rem;
+    }
+
+    .socials-list {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .socials-link {
+        padding: 0.5rem 1.5rem;
+        border-radius: 1rem;
+        border: 1px solid var(--dark-grey);
+        background: var(--darkest-purple);
+        text-decoration: none;
+        transition:
+            background-color 0.15s ease,
+            border 0.15s ease;
+    }
+
+    .socials-link:hover,
+    .socials-link:focus-visible {
+        background-color: rgba(var(--primary-rgb), 0.25);
+        border: 1px solid var(--primary);
+    }
+
+    .socials-link:focus-visible {
+        outline: none;
+    }
+
+    @media screen and (max-width: 640px) {
+        .center-container {
+            margin: 0 1rem;
+            gap: 1rem;
+        }
+
+        .socials-list {
+            flex-direction: column;
+        }
+
+        .socials-link {
+            justify-content: center;
+        }
+    
+</style>

@@ -68,6 +68,7 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 				<slot name="left" slot="left" />
 				<slot name="right" slot="right" />
 			</LayoutGrid>
+            <slot name="center" slot="center" />
 			<slot name="404" />
 		</main>
 		<Background />
