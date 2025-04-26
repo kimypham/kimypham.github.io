@@ -9,17 +9,17 @@ const path = Astro.url.pathname;
     <a class="site-title" href="/">{name}</a>
     <ul>
         <li>
-            <a href="/blog" class:list={{ active: path === "/blog" }}>Blog</a>
+            <a href="/about" class:list={{ active: path === "/about" }}>About</a>
+        </li>
+        <li class="nav-separator">/</li>
+        <li>
+            <a href="/work" class:list={{ active: path === "/work" }}>Work</a>
         </li>
         <li class="nav-separator">/</li>
         <li>
             <a href="/projects" class:list={{ active: path === "/projects" }}
                 >Projects</a
             >
-        </li>
-        <li class="nav-separator">/</li>
-        <li>
-            <a href="/work" class:list={{ active: path === "/work" }}>Work</a>
         </li>
         <li class="nav-separator">/</li>
         <li>
@@ -206,7 +206,7 @@ const path = Astro.url.pathname;
         border: none;
         outline: none;
         padding: 0.25rem 0.5rem;
-        width: 160px;
+        width: 240px;
     }
 
     #search::placeholder {
