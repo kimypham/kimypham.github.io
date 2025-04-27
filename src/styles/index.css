@@ -1,3 +1,9 @@
+hr {
+    height: 1px;
+    border: none;
+    background-color: var(--grey2);
+}
+
 .layout-grid-left,
 .layout-grid-right {
     display: flex;
@@ -65,6 +71,12 @@
 .work-experience-container {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
+}
+
+.work-experience-header {
+    display: flex;
+    align-items: center;
     gap: 1rem;
 }
 

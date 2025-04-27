@@ -1,6 +1,7 @@
 ---
 import '../styles/index.css';
 
+import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import { name, openGraph } from 'spectre:globals';
 import Card from '../components/Card.astro';
@@ -63,16 +64,31 @@ const workExperiences = await Promise.all(
             <div class="work-experience-container">
                 {
                     workExperiences.map(async (entry) => (
-                        <div class="work-experience-entry">
-                            <span class="work-experience-duration">
-                                {entry.duration}
-                            </span>
-                            <h3 class="work-experience-company">
-                                {entry.company}
-                            </h3>
-                            <span class="work-experience-role">
-                                {entry.title}
-                            </span>
+                    <div class="work-experience-entry">
+                            <div class="work-experience-header">
+                                <div class="work-experience-logo">
+                                    <Image
+                                        quality={100}
+                                        width={80}
+                                        height={80}
+                                        src={entry.image}
+                                        alt={`${entry.company} logo`}
+                                        loading="eager"
+                                    />
+                                </div>
+                                <div>
+                                    <span class="work-experience-duration">
+                                        {entry.duration}
+                                    </span>
+                                    <h3 class="work-experience-company">
+                                        {entry.company}
+                                    </h3>
+                                    <span class="work-experience-role">
+                                        {entry.title}
+                                    </span>
+                                </div>
+                            </div>
+                            
                             <p class="work-experience-desc">
                                 {entry.description}
                             </p>

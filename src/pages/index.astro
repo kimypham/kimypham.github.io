@@ -2,18 +2,19 @@
 import '../styles/index.css';
 
 
+import { Image } from 'astro:assets';
 import { getCollection, getEntry, render } from 'astro:content';
 import { name, openGraph } from 'spectre:globals';
 import Card from '../components/Card.astro';
 import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 
-const [posts, projects, about, quickWorkExperience, quickInfo, socials] =
+const [posts, projects, about, workExperience, quickInfo, socials] =
     await Promise.all([
         getCollection("posts", (post) => post.data.draft !== true),
         getCollection("projects"),
         getEntry("other", "about"),
-        getCollection("quickWorkExperience"),
+        getCollection("workExperience"),
         getCollection("quickInfo"),
         getCollection("socials")
     ]);
@@ -68,25 +69,77 @@ const { Content: About } = await render(about!);
                 </div>
             <Card>
                 {
-                    quickWorkExperience.reverse().map((entry) => (
+                    workExperience.reverse().map((entry) => (
+                    <a href={'/work'} style="text-decoration: none; color: inherit;">
                         <div class="work-experience-entry">
-                            <span class="work-experience-duration">
-                                {entry.data.duration}
-                            </span>
-                            <h3 class="work-experience-company">
-                                {entry.data.company}
-                            </h3>
-                            <span class="work-experience-role">
-                                {entry.data.title}
-                            </span>
+                            <div class="work-experience-header">
+                                <div class="work-experience-logo">
+                                    <Image
+                                        quality={100}
+                                        width={80}
+                                        height={80}
+                                        src={entry.data.image}
+                                        alt={`${entry.data.company} logo`}
+                                        loading="eager"
+                                    />
+                                </div>
+                                <div>
+                                    <span class="work-experience-duration">
+                                        {entry.data.duration}
+                                    </span>
+                                    <h3 class="work-experience-company">
+                                        {entry.data.company}
+                                    </h3>
+                                    <span class="work-experience-role">
+                                        {entry.data.title}
+                                    </span>
+                                </div>
+                            </div>
+                            
                             <p class="work-experience-desc">
                                 {entry.data.description}
                             </p>
                         </div>
+                    </a>
                     ))
                 }
             </Card>
         </div>
+        <!-- <div class="section-container">
+            <div class="header-container">
+                <Icon
+                    type="lucide"
+                    name="briefcase-business"
+                    width={24}
+                    height={24}
+                    class="glow-icon"
+                />
+                <h2>Education</h2>
+                <a href={`/work`}>See more </a>
+            </div>
+        </div>
+        <div class="header-container">
+            <Icon
+                type="lucide"
+                name="briefcase-business"
+                width={24}
+                height={24}
+                class="glow-icon"
+            />
+            <h2>Projects</h2>
+            <a href={`/work`}>See more </a>
+        </div>
+        <div class="header-container">
+            <Icon
+                type="lucide"
+                name="briefcase-business"
+                width={24}
+                height={24}
+                class="glow-icon"
+            />
+            <h2>Contact me!</h2>
+            <a href={`/work`}>See more </a>
+        </div> -->
     </div>
 
     <!-- <div class="layout-grid-left" slot="left">
@@ -293,6 +346,10 @@ const { Content: About } = await render(about!);
         border: 1px solid var(--dark-grey);
         background: var(--darkest-purple);
         text-decoration: none;
+    }
+
+    .socials-link,
+    .card {
         transition:
             background-color 0.15s ease,
             border 0.15s ease;
@@ -304,12 +361,18 @@ const { Content: About } = await render(about!);
         border: 1px solid var(--primary);
     }
 
+    .card:hover,
+    .card:focus-visible {
+        background-color: #181A28;
+        border: 1px solid var(--primary);
+    }
+
     .socials-link:focus-visible {
         outline: none;
     }
 
     .header-container {
-        align-items: center;
+        align-items: baseline;
         justify-items: center;
     }
 

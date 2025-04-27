@@ -19,8 +19,8 @@
     /* Needed for some hover effects. This is just the R, G and B values of the hex color above */
     --primary-rgb: 125, 165, 229;
     /* Used for links */
-    --primary-light: #a277ff;
-    --primary-lightest: #c2a8fd;
+    --primary-light: var(--yellow);
+    --primary-lightest: #fffdf8;
 }
 
 .overview-list {
