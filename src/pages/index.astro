@@ -4,6 +4,7 @@ import '../styles/index.css';
 
 import { getCollection, getEntry, render } from 'astro:content';
 import { name, openGraph } from 'spectre:globals';
+import Card from '../components/Card.astro';
 import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 
@@ -27,60 +28,65 @@ const { Content: About } = await render(about!);
     pagefindIgnore
 >
     <div class="center-container" slot="center">
-        <h1>Hi there! I'm<br><span class="text-glow">Kim Pham</span></h1>
-        <p style="font-size: 1.25em;">
-            I'm a <span class="text-glow">frontend software engineer</span> from Melbourne, Australia.<br/>
-            I love building delightful user experiences with design and code.
-        </p>
-        <div class="socials-list">
-            {
-                socials.map((item) => (
-                    <a href={item.data.link} style="text-decoration: none;">
-                        <div class="socials-link">
-                            <Icon
-                                type={item.data.icon.type}
-                                name={item.data.icon.name as any}
-                                width={24}
-                                height={24}
-                                class="glow-icon"
-                            />
-                            <span>{item.data.text}</span>
-                        </div>
-                    </a>
-                ))
-            }
+        <div class="section-container">
+            <h1>Hi there! I'm<br><span class="text-glow">Kim Pham</span></h1>
+            <p style="font-size: 1.25em; margin-bottom: 2rem;">
+                I'm a <span class="text-glow">frontend software engineer</span> from Melbourne, Australia.<br/>
+                I love building delightful user experiences with design and code.
+            </p>
+            <div class="socials-list" style="">
+                {
+                    socials.map((item) => (
+                        <a href={item.data.link} style="text-decoration: none;">
+                            <div class="socials-link">
+                                <Icon
+                                    type={item.data.icon.type}
+                                    name={item.data.icon.name as any}
+                                    width={24}
+                                    height={24}
+                                    class="glow-icon"
+                                />
+                                <span>{item.data.text}</span>
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
         </div>
-        <!-- <div class="header-container">
-            <Icon
-                type="lucide"
-                name="briefcase-business"
-                width={24}
-                height={24}
-                class="glow-icon"
-            />
-            <h2>Work Experience</h2>
-            <a href={`/work`}>See more </a>
-        </div> -->
-        <!-- <div class="">
-            {
-                quickWorkExperience.reverse().map((entry) => (
-                    <div class="work-experience-entry">
-                        <span class="work-experience-duration">
-                            {entry.data.duration}
-                        </span>
-                        <h3 class="work-experience-company">
-                            {entry.data.company}
-                        </h3>
-                        <span class="work-experience-role">
-                            {entry.data.title}
-                        </span>
-                        <p class="work-experience-desc">
-                            {entry.data.description}
-                        </p>
-                    </div>
-                ))
-            }
-        </div> -->
+        <div class="section-container">
+            
+                <div class="header-container">
+                    <Icon
+                        type="lucide"
+                        name="briefcase-business"
+                        width={24}
+                        height={24}
+                        class="glow-icon"
+                    />
+                    <h2>Work Experience</h2>
+                    <a href={`/work`}>See more </a>
+                </div>
+            <Card>
+                {
+                    quickWorkExperience.reverse().map((entry) => (
+                        <div class="work-experience-entry">
+                            <span class="work-experience-duration">
+                                {entry.data.duration}
+                            </span>
+                            <h3 class="work-experience-company">
+                                {entry.data.company}
+                            </h3>
+                            <span class="work-experience-role">
+                                {entry.data.title}
+                            </span>
+                            <p class="work-experience-desc">
+                                {entry.data.description}
+                            </p>
+                        </div>
+                    ))
+                }
+            </Card>
+        </div>
     </div>
 
     <!-- <div class="layout-grid-left" slot="left">
@@ -279,7 +285,6 @@ const { Content: About } = await render(about!);
         display: flex;
         flex-direction: row;
         gap: 1rem;
-        margin-top: 2rem;
     }
 
     .socials-link {
@@ -301,6 +306,16 @@ const { Content: About } = await render(about!);
 
     .socials-link:focus-visible {
         outline: none;
+    }
+
+    .header-container {
+        align-items: center;
+        justify-items: center;
+    }
+
+    .section-container {
+        margin-bottom: 3rem;
+        /* background-color: var(--dark-purple); */
     }
 
     @media screen and (max-width: 640px) {
