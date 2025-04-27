@@ -77,13 +77,13 @@ class PageBackground {
      * Sets up the background canvases. The text is decided based on the title of the page.
      */
     private initBackground = () => {
-        const text: string = "₊⊹☆⋆⟡࣪ ★";
-        // Add additional underscore to separate words
-
-        // Letters are 17px wide and 35px tall
-        const letters = Math.ceil(this.width / 5);
-        const lines = Math.ceil(this.height / 35);
-
+        const text: string = "₊☆⋆✧.*";
+    
+        const letterWidth: number = 17;
+        const letterHeight: number = 35;
+        const letters = Math.ceil(this.width / letterWidth);
+        const lines = Math.ceil(this.height / letterHeight);
+    
         // Loop through the canvas and draw the text
         for (let i = 0; i < lines; i++) {
             for (let j = 0; j < letters; j++) {
@@ -91,11 +91,11 @@ class PageBackground {
                 this.baseCtx.textAlign = "start";
                 this.baseCtx.textBaseline = "top";
                 this.baseCtx.fillStyle = "rgb(255, 246, 246)";
-                this.baseCtx.fillText(text[j % text.length], j * 5, i * 35);
-
+                this.baseCtx.fillText(text[j % text.length], j * letterWidth, i * letterHeight);
+        
                 this.letterPositions.push({
-                    x: j * 5,
-                    y: i * 35,
+                    x: j * letterWidth,
+                    y: i * letterHeight,
                     letter: text[j % text.length]
                 });
             }
@@ -104,7 +104,7 @@ class PageBackground {
         // Randomly select 75% of the letters to animate
         const randomLetters = this.getRandomAmountFromArray<LetterPosition>(
             this.letterPositions,
-            Number.parseInt(lines.toFixed())
+            Number.parseInt((lines * 0.75).toFixed())
         );
 
         // Draw the letters on the overlay canvas
