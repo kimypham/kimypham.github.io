@@ -63,26 +63,24 @@ const workExperiences = await Promise.all(
             <div class="work-experience-container">
                 {
                     workExperiences.map(async (entry) => (
-                    <div class="work-experience-entry">
+                    <div class="card-entry">
                             <div class="work-experience-header">
-                                <div class="work-experience-logo">
-                                    <Image
-                                        quality={100}
-                                        width={80}
-                                        height={80}
-                                        src={entry.image}
-                                        alt={`${entry.company} logo`}
-                                        loading="eager"
-                                    />
-                                </div>
+                                <Image
+                                    quality={100}
+                                    width={80}
+                                    height={80}
+                                    src={entry.image}
+                                    alt={`${entry.company} logo`}
+                                    loading="eager"
+                                />
                                 <div>
-                                    <span class="work-experience-duration">
+                                    <span class="card-date">
                                         {entry.duration}
                                     </span>
-                                    <h3 class="work-experience-company">
+                                    <h3 class="card-title">
                                         {entry.company}
                                     </h3>
-                                    <span class="work-experience-role">
+                                    <span class="card-subtitle">
                                         {entry.title}
                                     </span>
                                 </div>

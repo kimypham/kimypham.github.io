@@ -9,12 +9,13 @@ import Card from '../components/Card.astro';
 import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 
-const [posts, projects, about, workExperience, quickInfo, socials] =
+const [posts, projects, about, workExperience, education, quickInfo, socials] =
     await Promise.all([
         getCollection("posts", (post) => post.data.draft !== true),
         getCollection("projects"),
         getEntry("other", "about"),
         getCollection("workExperience"),
+        getCollection("education"),
         getCollection("quickInfo"),
         getCollection("socials")
     ]);
@@ -54,7 +55,6 @@ const { Content: About } = await render(about!);
             </div>
         </div>
         <div class="section-container">
-            
                 <div class="header-container">
                     <Icon
                         type="lucide"
@@ -66,30 +66,28 @@ const { Content: About } = await render(about!);
                     <h2>Work Experience</h2>
                     <a href={`/work`}>See more </a>
                 </div>
-            <Card>
+            <Card class="hover-effect">
                 {
                     workExperience.reverse().map((entry) => (
                     <a href={'/work'} style="text-decoration: none; color: inherit;">
-                        <div class="work-experience-entry">
+                        <div class="card-entry">
                             <div class="work-experience-header">
-                                <div class="work-experience-logo">
-                                    <Image
-                                        quality={100}
-                                        width={80}
-                                        height={80}
-                                        src={entry.data.image}
-                                        alt={`${entry.data.company} logo`}
-                                        loading="eager"
-                                    />
-                                </div>
+                                <Image
+                                    quality={100}
+                                    width={80}
+                                    height={80}
+                                    src={entry.data.image}
+                                    alt={`${entry.data.company} logo`}
+                                    loading="eager"
+                                />
                                 <div>
-                                    <span class="work-experience-duration">
+                                    <span class="card-date">
                                         {entry.data.duration}
                                     </span>
-                                    <h3 class="work-experience-company">
+                                    <h3 class="card-title">
                                         {entry.data.company}
                                     </h3>
-                                    <span class="work-experience-role">
+                                    <span class="card-subtitle">
                                         {entry.data.title}
                                     </span>
                                 </div>
@@ -104,20 +102,52 @@ const { Content: About } = await render(about!);
                 }
             </Card>
         </div>
-        <!-- <div class="section-container">
+        <div class="section-container">
             <div class="header-container">
                 <Icon
                     type="lucide"
-                    name="briefcase-business"
+                    name="graduation-cap"
                     width={24}
                     height={24}
                     class="glow-icon"
                 />
                 <h2>Education</h2>
-                <a href={`/work`}>See more </a>
+            </div>
+            <div class="education-cards">
+                {
+                    education.reverse().map((entry) => (
+                    <Card class="education-card">
+                        <div class="card-entry">
+                            <div class="education-header">
+                                <Image
+                                    quality={100}
+                                    width={150}
+                                    height={150}
+                                    src={entry.data.image}
+                                    alt={entry.data.image}
+                                    loading="eager"
+                                />
+                                <div>
+                                    <span class="card-date">
+                                        {entry.data.duration}
+                                    </span>
+                                    <h3 class="card-title">
+                                        {entry.data.title}
+                                    </h3>
+                                    <span class="card-subtitle">
+                                        {entry.data.company !== 'Monash University' ? entry.data.company : ''}
+                                    </span>
+                                </div>
+                            </div>
+                            <div set:html={entry.data.description} class="education-desc"/>
+                        </div>
+                    </Card>
+
+                    ))
+                }
             </div>
         </div>
-        <div class="header-container">
+        <!-- <div class="header-container">
             <Icon
                 type="lucide"
                 name="briefcase-business"
@@ -294,14 +324,14 @@ const { Content: About } = await render(about!);
             <div class="work-experience-container">
                 {
                     quickWorkExperience.reverse().map((entry) => (
-                        <div class="work-experience-entry">
-                            <span class="work-experience-duration">
+                        <div class="card-entry">
+                            <span class="card-date">
                                 {entry.data.duration}
                             </span>
-                            <h3 class="work-experience-company">
+                            <h3 class="card-title">
                                 {entry.data.company}
                             </h3>
-                            <span class="work-experience-role">
+                            <span class="card-subtitle">
                                 {entry.data.title}
                             </span>
                             <p class="work-experience-desc">
@@ -317,11 +347,6 @@ const { Content: About } = await render(about!);
 <style>
     .center-container {
         display: flex;
-        height: 80vh;
-        /* justify-content: center; */
-        /* align-items: center; */
-        /* width: 100%; */
-        /* text-align: center; */
         flex-direction: column;
     }
 
@@ -348,7 +373,7 @@ const { Content: About } = await render(about!);
     }
 
     .socials-link,
-    .card {
+    .hover-effect {
         transition:
             background-color 0.15s ease,
             border 0.15s ease;
@@ -360,8 +385,8 @@ const { Content: About } = await render(about!);
         border: 1px solid var(--primary);
     }
 
-    .card:hover,
-    .card:focus-visible {
+    .hover-effect:hover,
+    .hover-effect:focus-visible {
         background-color: #181A28;
         border: 1px solid var(--primary);
     }
@@ -380,13 +405,48 @@ const { Content: About } = await render(about!);
         /* background-color: var(--dark-purple); */
     }
 
+    .education-header {
+        align-items: center;
+        justify-items: center;
+        gap: 1rem;
+    }
+
+    .education-cards {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .education-card, .education-desc {
+        background-color: var(--darker-purple);
+    }
+
+    .education-card {
+        position: relative;
+    }
+    
+    .education-desc {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left:0;
+        margin: 30px;
+        height: 100%;
+        transition:
+            opacity 0.3s ease
+    }
+    
+    .education-desc:hover {
+        opacity: 100;
+    }
+
     @media screen and (max-width: 640px) {
         .center-container {
             margin: 0 1rem;
             gap: 1rem;
         }
 
-        .socials-list {
+        .socials-list, .education-cards {
             flex-direction: column;
         }
 

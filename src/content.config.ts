@@ -41,6 +41,19 @@ const quickWorkExperience = defineCollection({
     })
 });
 
+const education = defineCollection({
+    loader: file("src/content/education.json"),
+    schema: ({ image }) => z.object({
+        id: z.number(),
+        duration: z.string(),
+        title: z.string(),
+        company: z.string(),
+        image: image(),
+        link: z.string().url().optional(),
+        description: z.string(),
+    })
+});
+
 const tags = defineCollection({
     loader: file("src/content/tags.json"),
     schema: z.object({
@@ -110,4 +123,4 @@ const projects = defineCollection({
     })
 });
 
-export const collections = { tags, posts, projects, other, quickInfo, socials, quickWorkExperience, workLinks, workExperience };
+export const collections = { tags, posts, projects, other, quickInfo, socials, quickWorkExperience, education, workLinks, workExperience };

@@ -12,13 +12,6 @@ hr {
     gap: 2rem;
 }
 
-@media screen and (max-width: 640px) {
-    .layout-grid-left,
-    .layout-grid-right {
-        gap: 1rem;
-    }
-}
-
 .flex-col-card {
     display: flex;
     flex-direction: column;
@@ -64,7 +57,7 @@ hr {
 }
 
 .post-date,
-.work-experience-duration {
+.card-date {
     color: var(--grey);
 }
 
@@ -74,27 +67,21 @@ hr {
     gap: 1rem;
 }
 
-.work-experience-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.work-experience-entry:not(:last-of-type) {
+.card-entry:not(:last-of-type) {
     border-bottom: 1px solid var(--dark-grey);
     padding-bottom: 1rem;
 }
 
-.work-experience-duration {
+.card-date {
     font-size: 0.925rem;
 }
 
-.work-experience-company {
+.card-title {
     margin-top: 0.25rem;
     margin-bottom: 0.5rem;
 }
 
-.work-experience-role {
+.card-subtitle {
     margin-bottom: 0.75rem;
 }
 
@@ -104,4 +91,11 @@ hr {
     flex-direction: row;
     gap: 0.75rem;
     align-items: center;
+}
+
+@media screen and (max-width: 640px) {
+    .layout-grid-left,
+    .layout-grid-right {
+        gap: 1rem;
+    }
 }

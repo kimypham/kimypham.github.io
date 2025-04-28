@@ -11,12 +11,6 @@ article {
     min-width: 0;
 }
 
-article hr {
-    height: 1px;
-    border: none;
-    background-color: var(--grey2);
-}
-
 p:has(img) {
     display: flex;
     align-items: center;

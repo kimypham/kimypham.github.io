@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "duration": "Jan 2020 - May 2024",
+        "title": "Bachelor of Computer Science",
+        "company": "Monash University",
+        "image": "/src/content/assets/monash.png",
+        "link": "https://www.monash.edu",
+        "description": "<strong>Volunteer work:</strong><br /><ul><li>Monash Association of Coding (MAC) Design Director and Design Officer</li><li>IT Peer Mentoring Senior Mentor and Mentor</li><li>IT Programming Bootcamp tutor</li>"
+    },
+    {
+        "id": 2,
+        "duration": "Sep 2023",
+        "title": "AWS Certified Cloud Practitioner",
+        "company": "AWS",
+        "image": "/src/content/assets/aws-certified-cloud-practitioner-badge.png",
+        "link": "https://www.monash.edu",
+        "description": "Earners of this certification have a fundamental understanding of IT services and their uses in the AWS Cloud."
+    },
+    {
+        "id": 3,
+        "duration": "Nov 2024",
+        "title": "Microsoft Certified: Azure Administrator Associate",
+        "company": "Azure",
+        "image": "/src/content/assets/microsoft-certified-associate-badge.svg",
+        "link": "https://www.monash.edu",
+        "description": "Earners of this certification have the key skills to configure, manage, secure, and administer key functions in Microsoft Azure."
+    }
+]
