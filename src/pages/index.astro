@@ -23,7 +23,6 @@ const [posts, projects, about, workExperience, education, quickInfo, socials] =
 // biome-ignore lint/style/noNonNullAssertion: Should always be defined.
 const { Content: About } = await render(about!);
 ---
-
 <Layout
     title={openGraph.home.title || name}
     description={openGraph.home.description}
@@ -116,9 +115,11 @@ const { Content: About } = await render(about!);
             <div class="education-cards">
                 {
                     education.reverse().map((entry) => (
-                    <Card class="education-card">
-                        <div class="card-entry">
-                            <div class="education-header">
+                    <Card class="flip-card">
+                        <div class="flip-card-inner">
+                            <a href="#!" id="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <div class="education-header">
                                 <Image
                                     quality={100}
                                     width={150}
@@ -135,16 +136,53 @@ const { Content: About } = await render(about!);
                                         {entry.data.title}
                                     </h3>
                                     <span class="card-subtitle">
-                                        {entry.data.company !== 'Monash University' ? entry.data.company : ''}
+                                        {entry.data.company === 'Monash University' ? entry.data.company : ''}
                                     </span>
                                 </div>
                             </div>
-                            <div set:html={entry.data.description} class="education-desc"/>
+                                </div>
+                            </a>
+                            <div class="flip-card-back">
+                                <div set:html={entry.data.description} class="education-descad"/>
+                            </div>
                         </div>
                     </Card>
-
+                    <div><button onclick="Event => testFunction(event)" class="my-button" my-button>test</button></div>
+                    // <Card class="education-card">
+                    //     <div class="card-entry">
+                    //         <div class="education-header">
+                    //             <Image
+                    //                 quality={100}
+                    //                 width={150}
+                    //                 height={150}
+                    //                 src={entry.data.image}
+                    //                 alt={entry.data.image}
+                    //                 loading="eager"
+                    //             />
+                    //             <div>
+                    //                 <span class="card-date">
+                    //                     {entry.data.duration}
+                    //                 </span>
+                    //                 <h3 class="card-title">
+                    //                     {entry.data.title}
+                    //                 </h3>
+                    //                 <span class="card-subtitle">
+                    //                     {entry.data.company === 'Monash University' ? entry.data.company : ''}
+                    //                 </span>
+                    //             </div>
+                    //         </div>
+                    //         <div set:html={entry.data.description} class="education-desc"/>
+                    //     </div>
+                    // </Card>
+//                     <div id="show_hide">
+// ok
+// </div>
+//                     <input type="text" 
+//     onfocus="document.getElementById('show_hide').style.display='block';"
+//     onblur="document.getElementById('show_hide').style.display='none';"/>
                     ))
                 }
+                
             </div>
         </div>
         <!-- <div class="header-container">
@@ -344,6 +382,31 @@ const { Content: About } = await render(about!);
         </Card>
     </div> -->
 </Layout>
+<script>
+    const testFunction = (event) =>{
+      const currentElement = event.currentTarget; // The button element
+      console.log("Clicked element:", currentElement);
+  
+      // Example: get text content
+      console.log("Button text:", currentElement.textContent);
+    }
+
+    const tgt = document.querySelector("#test");
+    tgt.addEventListener("click", () => {
+        console.log("Hello, on client");
+    });
+
+    // document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll("[my-button]");
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", (event) => {
+        // const currentButton = event.currentTarget;
+        console.log("Clicked button:");
+      });
+    });
+//   });
+</script>
 <style>
     .center-container {
         display: flex;
@@ -436,10 +499,78 @@ const { Content: About } = await render(about!);
             opacity 0.3s ease
     }
     
-    .education-desc:hover {
+    .education-desc:hover, .{
         opacity: 100;
     }
 
+    /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+
+.flip-card {
+  background-color: transparent;
+  /* width: 300px; */
+  height: 450px;
+  // border: 1px solid #f1f1f1;
+  /* // perspective: 1000px; Remove this if you don't want the 3D effect */
+}
+
+
+/* This container is needed to position the front and back side */
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card-inner a {
+    color: var(--white);
+}
+
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+
+.flip-card:hover .flip-card-inner,
+.flip-card:focus-within .flip-card-inner,
+.flip-card:active .flip-card-inner,
+.flip-card:focus .flip-card-inner {
+  transform: rotateY(180deg);
+  
+}
+
+
+/* Position the front and back side */
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  /* Safari */
+  backface-visibility: hidden;
+}
+
+
+/* Style the front side (fallback if image is missing) */
+
+.flip-card-front {
+  background-color: var(--darkest-purple);
+}
+
+
+/* Style the back side */
+
+.flip-card-back {
+  background-color: var(--darkest-purple);
+  transform: rotateY(180deg);
+}
+
+#show_hide{
+    display: none;
+}
     @media screen and (max-width: 640px) {
         .center-container {
             margin: 0 1rem;
