@@ -3,25 +3,18 @@ import '../styles/index.css';
 
 
 import { Image } from 'astro:assets';
-import { getCollection, getEntry, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 import { name, openGraph } from 'spectre:globals';
 import Card from '../components/Card.astro';
 import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 
-const [posts, projects, about, workExperience, education, quickInfo, socials] =
+const [workExperience, education, socials] =
     await Promise.all([
-        getCollection("posts", (post) => post.data.draft !== true),
-        getCollection("projects"),
-        getEntry("other", "about"),
         getCollection("workExperience"),
         getCollection("education"),
-        getCollection("quickInfo"),
         getCollection("socials")
     ]);
-
-// biome-ignore lint/style/noNonNullAssertion: Should always be defined.
-const { Content: About } = await render(about!);
 ---
 
 <Layout
@@ -116,233 +109,37 @@ const { Content: About } = await render(about!);
             <div class="education-cards">
                 {
                     education.reverse().map((entry) => (
-                    <Card class="education-card">
-                        <div class="card-entry">
-                            <div class="education-header">
-                                <Image
-                                    quality={100}
-                                    width={150}
-                                    height={150}
-                                    src={entry.data.image}
-                                    alt={entry.data.image}
-                                    loading="eager"
-                                />
-                                <div>
-                                    <span class="card-date">
-                                        {entry.data.duration}
-                                    </span>
-                                    <h3 class="card-title">
-                                        {entry.data.title}
-                                    </h3>
-                                    <span class="card-subtitle">
-                                        {entry.data.company !== 'Monash University' ? entry.data.company : ''}
-                                    </span>
+                        <Card class="education-card" tabindex="0">
+                            <div class="card-entry">
+                                <div class="education-header">
+                                    <Image
+                                        quality={100}
+                                        width={150}
+                                        height={150}
+                                        src={entry.data.image}
+                                        alt={entry.data.title}
+                                        loading="eager"
+                                    />
+                                    <div>
+                                        <span class="card-date">
+                                            {entry.data.duration}
+                                        </span>
+                                        <h3 class="card-title">
+                                            {entry.data.title}
+                                        </h3>
+                                        <span class="card-subtitle">
+                                            {entry.data.company === 'Monash University' ? entry.data.company : ''}
+                                        </span>
+                                    </div>
                                 </div>
+                                <div set:html={entry.data.description} class="education-desc"/>
                             </div>
-                            <div set:html={entry.data.description} class="education-desc"/>
-                        </div>
-                    </Card>
-
+                        </Card>
                     ))
                 }
             </div>
         </div>
-        <!-- <div class="header-container">
-            <Icon
-                type="lucide"
-                name="briefcase-business"
-                width={24}
-                height={24}
-                class="glow-icon"
-            />
-            <h2>Projects</h2>
-            <a href={`/work`}>See more </a>
-        </div>
-        <div class="header-container">
-            <Icon
-                type="lucide"
-                name="briefcase-business"
-                width={24}
-                height={24}
-                class="glow-icon"
-            />
-            <h2>Contact me!</h2>
-            <a href={`/work`}>See more </a>
-        </div> -->
     </div>
-
-    <!-- <div class="layout-grid-left" slot="left">
-        <Card class="flex-col-card">
-            <ImageGlow
-                quality={100}
-                width={80}
-                height={80}
-                src={ProfilePicture}
-                alt="Louis looking out of a window"
-                loading="eager"
-            />
-            <h2>{name}</h2>
-            <ul class="overview-list">
-                {
-                    quickInfo.map((info) => (
-                        <li>
-                            <Icon
-                                type={info.data.icon.type}
-                                name={info.data.icon.name as any}
-                                width={24}
-                                height={24}
-                                class="glow-icon"
-                            />
-                            <span>{info.data.text}</span>
-                        </li>
-                    ))
-                }
-            </ul>
-        </Card>
-        <Card>
-            <h3 class="no-mt">Socials</h3>
-            <ul class="overview-list">
-                {
-                    socials.map((item) => (
-                        <li>
-                            <a href={item.data.link} class="socials-link">
-                                <Icon
-                                    type={item.data.icon.type}
-                                    name={item.data.icon.name as any}
-                                    width={24}
-                                    height={24}
-                                    class="glow-icon"
-                                />
-                                <span>{item.data.text}</span>
-                            </a>
-                        </li>
-                    ))
-                }
-            </ul>
-        </Card>
-    </div>
-    <div class="layout-grid-right" slot="right">
-        <Card>
-            <div class="header-container">
-                <Icon
-                    type="lucide"
-                    name="user"
-                    width={24}
-                    height={24}
-                    class="glow-icon"
-                />
-                <h2>About me</h2>
-            </div>
-            <div class="prose">
-                <About />
-            </div>
-        </Card>
-        <Card>
-            <div class="header-container">
-                <Icon
-                    type="lucide"
-                    name="rss"
-                    width={24}
-                    height={24}
-                    class="glow-icon"
-                />
-                <h2>Latest Posts</h2>
-                <a href={`/blog`}>See all </a>
-            </div>
-            <div class="content-container">
-                {
-                    posts
-                        .sort(
-                            (a, b) =>
-                                b.data.createdAt.getTime() -
-                                a.data.createdAt.getTime()
-                        )
-                        .slice(0, 2)
-                        .map((post) => (
-                            <a href={`/blog/${post.id}`} class="post-container">
-                                <div class="post-header">
-                                    <h3>{post.data.title}</h3>
-                                    <span class="post-date">
-                                        {post.data.createdAt.toLocaleDateString()}
-                                    </span>
-                                </div>
-                                <span>{post.data.description}</span>
-                            </a>
-                        ))
-                }
-            </div>
-        </Card>
-        <Card>
-            <div class="header-container">
-                <Icon
-                    type="lucide"
-                    name="folder-git"
-                    width={24}
-                    height={24}
-                    class="glow-icon"
-                />
-                <h2>Latest Projects</h2>
-                <a href={`/projects`}>See all </a>
-            </div>
-            <div class="content-container">
-                {
-                    projects
-                        .sort(
-                            (a, b) =>
-                                b.data.date.getTime() - a.data.date.getTime()
-                        )
-                        .slice(0, 2)
-                        .map((project) => (
-                            <a
-                                href={`/projects/${project.id}`}
-                                class="post-container"
-                            >
-                                <div class="post-header">
-                                    <h3>{project.data.title}</h3>
-                                    <span class="post-date">
-                                        {project.data.date.toLocaleDateString()}
-                                    </span>
-                                </div>
-                                <span>{project.data.description}</span>
-                            </a>
-                        ))
-                }
-            </div>
-        </Card>
-        <Card>
-            <div class="header-container">
-                <Icon
-                    type="lucide"
-                    name="briefcase-business"
-                    width={24}
-                    height={24}
-                    class="glow-icon"
-                />
-                <h2>Work Experience</h2>
-                <a href={`/work`}>See more </a>
-            </div>
-            <div class="work-experience-container">
-                {
-                    quickWorkExperience.reverse().map((entry) => (
-                        <div class="card-entry">
-                            <span class="card-date">
-                                {entry.data.duration}
-                            </span>
-                            <h3 class="card-title">
-                                {entry.data.company}
-                            </h3>
-                            <span class="card-subtitle">
-                                {entry.data.title}
-                            </span>
-                            <p class="work-experience-desc">
-                                {entry.data.description}
-                            </p>
-                        </div>
-                    ))
-                }
-            </div>
-        </Card>
-    </div> -->
 </Layout>
 <style>
     .center-container {
@@ -381,13 +178,13 @@ const { Content: About } = await render(about!);
 
     .socials-link:hover,
     .socials-link:focus-visible {
-        background-color: #1F2434;
+        background-color: #1f2434;
         border: 1px solid var(--primary);
     }
 
     .hover-effect:hover,
     .hover-effect:focus-visible {
-        background-color: #181A28;
+        background-color: #181a28;
         border: 1px solid var(--primary);
     }
 
@@ -401,13 +198,13 @@ const { Content: About } = await render(about!);
     }
 
     .section-container {
-        margin-bottom: 3rem;
-        /* background-color: var(--dark-purple); */
+         margin-bottom: 3rem;
     }
 
     .education-header {
         align-items: center;
         justify-items: center;
+        text-align: center;
         gap: 1rem;
     }
 
@@ -417,27 +214,25 @@ const { Content: About } = await render(about!);
         gap: 1rem;
     }
 
-    .education-card, .education-desc {
-        background-color: var(--darker-purple);
+    .education-card {
+        min-height: 510px;
+        align-content: center;
     }
 
     .education-card {
-        position: relative;
+        background-color: var(--darker-purple);
     }
-    
+
     .education-desc {
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        left:0;
-        margin: 30px;
-        height: 100%;
-        transition:
-            opacity 0.3s ease
+        display: none;
     }
-    
-    .education-desc:hover {
-        opacity: 100;
+
+    .education-card.show-desc .education-desc {
+      display: block;
+    }
+
+    .education-card.show-desc .education-header {
+        display: none;
     }
 
     @media screen and (max-width: 640px) {
@@ -446,12 +241,50 @@ const { Content: About } = await render(about!);
             gap: 1rem;
         }
 
-        .socials-list, .education-cards {
+        .socials-list,
+        .education-cards {
             flex-direction: column;
+        }
+
+        .education-card {
+            min-height: 600px;
         }
 
         .socials-link {
             justify-content: center;
         }
+    }
+  
+    @media (hover: hover) {
+        .education-card:hover .education-desc {
+            display: block;
+        }
     
+        .education-card:hover .education-header {
+            display: none;
+        }
+    }
 </style>
+<script>
+    document
+        .querySelectorAll<HTMLDivElement>(".education-card")
+        .forEach((card) => {
+            card.addEventListener("click", () => {
+            card.classList.toggle("show-desc");
+            });
+        });
+    document
+        .querySelectorAll<HTMLDivElement>(".education-card")
+        .forEach((card) => {
+            card.addEventListener("focus", () => {
+            card.classList.add("show-desc");
+            });
+        });
+    document
+        .querySelectorAll<HTMLDivElement>(".education-card")
+        .forEach((card) => {
+            card.addEventListener("blur", () => {
+            card.classList.remove("show-desc");
+            });
+        });
+</script>
