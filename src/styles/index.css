@@ -61,6 +61,13 @@ hr {
     color: var(--grey);
 }
 
+.work-experience-header {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+}
+
 .work-experience-container {
     display: flex;
     flex-direction: column;

@@ -3,7 +3,7 @@
         "id": 1,
         "icon": {
             "type": "lucide",
-            "name": "github"
+            "name": "file-user"
         },
         "text": "Resume",
         "link": "https://github.com/kimypham"
