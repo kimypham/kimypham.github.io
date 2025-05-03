@@ -110,9 +110,11 @@ const projects = defineCollection({
     schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
+        technology: z.string(),
         date: z.coerce.date(),
         image: image(),
-        link: z.string().url().optional(),
+        demoLink: z.string().url().optional(),
+        githubLink: z.string().url().optional(),
         info: z.array(
             z.object({
                 text: z.string(),

@@ -61,7 +61,7 @@ hr {
     color: var(--grey);
 }
 
-.work-experience-header {
+.card-header {
     display: flex;
     flex-direction: row;
     gap: 1rem;
