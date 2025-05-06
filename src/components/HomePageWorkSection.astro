@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Card from './Card.astro';
+import Icon from './Icon.astro';
+
+const workExperience = await getCollection("workExperience");
+---
+<div class="section-container">
+    <div class="header-container">
+        <Icon
+            type="lucide"
+            name="briefcase-business"
+            width={24}
+            height={24}
+            class="glow-icon"
+        />
+        <h2>Work Experience</h2>
+        <a href={`/work`}>See more </a>
+    </div>
+    <Card class="hover-effect">
+        {
+            workExperience.reverse().map((entry) => (
+            <a href={'/work'} style="text-decoration: none; color: inherit;">
+                <div class="card-entry">
+                    <div class="card-header">
+                        <Image
+                            quality={100}
+                            width={80}
+                            height={80}
+                            src={entry.data.image}
+                            alt={`${entry.data.company} logo`}
+                            loading="eager"
+                        />
+                        <div>
+                            <span class="card-date">
+                                {entry.data.duration}
+                            </span>
+                            <h3 class="card-title">
+                                {entry.data.company}
+                            </h3>
+                            <span class="card-subtitle">
+                                {entry.data.title}
+                            </span>
+                        </div>
+                    </div>
+                    <p>
+                        {entry.data.description}
+                    </p>
+                </div>
+            </a>
+            ))
+        }
+    </Card>
+</div>
