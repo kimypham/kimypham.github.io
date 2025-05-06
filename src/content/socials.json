@@ -3,13 +3,22 @@
         "id": 1,
         "icon": {
             "type": "lucide",
+            "name": "file-user"
+        },
+        "text": "Resume",
+        "link": "/src/content/assets/Kim_Pham_Resume.pdf"
+    },
+    {
+        "id": 2,
+        "icon": {
+            "type": "lucide",
             "name": "github"
         },
         "text": "GitHub",
         "link": "https://github.com/kimypham"
     },
     {
-        "id": 2,
+        "id": 3,
         "icon": {
             "type": "lucide",
             "name": "linkedin"
@@ -18,7 +27,7 @@
         "link": "https://www.linkedin.com/in/kimypham/"
     },
     {
-        "id": 3,
+        "id": 4,
         "icon": {
             "type": "lucide",
             "name": "mail"

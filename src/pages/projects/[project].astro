@@ -40,7 +40,7 @@ const { Content, headings } = await render(project);
                         const Tag = info.link ? 'a' : 'div';
                         return (
                         <li>
-                            <Tag href={info.link} class='socials-link'>
+                            <Tag href={info.link} class='socials-link' target="_blank">
                                 <Icon type={info.icon.type} name={info.icon.name as any} width={24} height={24} class='glow-icon' />
                                 <span>{info.text}</span>
                             </Tag>
@@ -68,9 +68,7 @@ const { Content, headings } = await render(project);
         <div class="layout-grid-right" slot="right">
         <Card>
             <div id="_top" data-pagefind-ignore>
-                
                 <div class="header-container">
-                    
                     <Icon
                         type="lucide"
                         name={project.data.icon.name as any}
@@ -78,7 +76,7 @@ const { Content, headings } = await render(project);
                         height={24}
                         class="glow-icon"
                     />
-                    <h2 class="">{project.data.title}</h2>
+                    <h2>{project.data.title}</h2>
                 </div>
                 {project.data.image && <ImageGlow quality={100} class="article-image" src={project.data.image} alt={project.data.title} />}
                 

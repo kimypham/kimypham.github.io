@@ -41,7 +41,7 @@ const slugify = (string: string): string => {
             <div class="socials-list" style="">
                 {
                     socials.map((item) => (
-                        <a href={item.data.link} style="text-decoration: none;">
+                        <a href={item.data.link} style="text-decoration: none;" target="_blank">
                             <div class="socials-link">
                                 <Icon
                                     type={item.data.icon.type}
@@ -205,6 +205,7 @@ const slugify = (string: string): string => {
                 </div>
             </div>
         </div>
+        <!-- <a href="/src/content/assets/Kim_Pham_Resume.pdf">ok</a> -->
     </div>
 </Layout>
 <style>

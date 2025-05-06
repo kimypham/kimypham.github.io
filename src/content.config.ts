@@ -26,7 +26,7 @@ const socials = defineCollection({
         id: z.number(),
         icon: lucideIconSchema,
         text: z.string(),
-        link: z.string().url(),
+        link: z.string(),
     })
 });
 

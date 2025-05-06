@@ -8,9 +8,9 @@ import Card from '../components/Card.astro';
 import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 
-const [workExperience, workLinks] = await Promise.all([
+const [workExperience, socials] = await Promise.all([
     getCollection("workExperience"),
-    getCollection("workLinks")
+    getCollection("socials")
 ]);
 
 const workExperiences = await Promise.all(
@@ -30,9 +30,9 @@ const workExperiences = await Promise.all(
             <h2 class="no-mt">Links</h2>
             <ul class="overview-list">
                 {
-                    workLinks.map((item) => (
+                    socials.map((item) => (
                         <li>
-                            <a href={item.data.link} class="socials-link">
+                            <a href={item.data.link} class="socials-link" target="_blank">
                                 <Icon
                                     type={item.data.icon.type}
                                     name={item.data.icon.name as any}
