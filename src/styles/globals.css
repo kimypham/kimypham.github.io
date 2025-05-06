@@ -156,7 +156,7 @@ main {
 
 .block-link:hover,
 .block-link:focus-visible {
-    color: var(--white);
+    color: var(--darkest-purple);
     background-color: var(--primary);
     text-decoration: none;
     outline: none;

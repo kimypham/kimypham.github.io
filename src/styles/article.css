@@ -63,7 +63,7 @@ p img {
 }
 
 ol li a.active {
-    color: var(--white);
+    color: var(--darkest-purple);
     background: var(--primary);
 }
 

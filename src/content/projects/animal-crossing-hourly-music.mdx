@@ -1,0 +1,127 @@
+---
+title: Animal Crossing Hourly Music
+technology: React • TypeScript • TailwindCSS • Vite
+date: 01-30-2025
+description: A cozy web app that plays soundtracks from game series 'Animal Crossing' based on your current time and weather conditions - bringing a little bit of island life to your day. 🍀🐶🐱
+image: ../assets/animal-crossing-music.png
+demoLink: https://kimypham.github.io/ac-music/
+githubLink: https://github.com/kimypham/ac-music/
+icon:
+    type: lucide
+    name: music
+info:
+    - text: Live demo
+      link: https://kimypham.github.io/ac-music/
+      icon:
+          type: lucide
+          name: play
+    - text: GitHub
+      link: https://github.com/kimypham/ac-music/
+      icon:
+          type: lucide
+          name: github
+---
+
+Animal Crossing Hourly Music is a cozy web app that plays soundtracks from game series 'Animal Crossing' based on your current time and weather conditions - bringing a little bit of island life to your day. 🍀🐶🐱
+
+I listen to a lot of Nintendo soundtracks (especially Animal Crossing's) when studying/working, so I wanted to create my own player.
+
+## Features
+
+- 🎮 Choose your favourite game soundtrack
+
+    - Switch between iconic soundtracks from across the years of the game series. Updated whenever a new game comes out.
+
+- ⏰ Real time hourly tracks
+
+    - Each hour plays a different song, just like in the games! (So that's 24 possible tracks to listen to in a day!)
+    - Or if you prefer, you can also choose specific times to listen to as well.
+
+- 🌦️ Real time weather tracks
+
+    - Depending on your real weather, the tracks change too!
+    - Or if you prefer, you can also choose to stick to a specific weather variation to listen to as well.
+
+- 📱 Responsive design
+
+    - For desktop and mobile
+    - Dark/light mode
+
+## Built with
+
+- React
+- TypeScript
+- Vite – Lightning-fast build tool
+- Tailwind CSS – Utility-first CSS framework
+- React Router – Declarative routing
+- Axios – HTTP client for data fetching
+- GitHub Pages – For deployment
+- ESLint – Linting and code quality
+
+## Design choices
+
+### Soundtracks
+
+In each Animal Crossing game, there is a unique song that plays for every hour of the day (so 24 possible), with usually 3 total different variations of the songs which play during normal, rainy, and snowy weather. (This excludes the original games, which only had the original and rainy soundtracks).
+
+In the games, only the hourly soundtrack plays depending on your current time. The weather isn't dependant on your real-life conditions (as the games do not have access to that info), but to keep with the theme of playing music depending on your real life conditions, I choose for my app to also include weather conditions as well. To save the hassle of tokens, I used the free and opensource [OpenMeteo weather API](https://open-meteo.com/), and used the user's location to determine their weather condition.
+
+These soundtracks are currently stored by keeping YouTube video IDs in a record set. In the future, these IDs could be stored in a backend somewhere so I can update them easily (when videos get taken down), but for now I'm happy to keep them stored in the app.
+
+### Video player
+
+Currently the soundtracks are sourced from YouTube, making it easy to embed and control the music, but it comes with it's own problems.
+These were the main issues that came from this:
+
+1.  Videos must be shown
+
+        My original design featured an extremely minimalistic design, based off the dialogue UI from the games.
+
+        ![Mockup of the orignal design based off the dialogue UI from Animal Crossing](/img/animal-crossing-original-design.png)
+
+        _<small>Mockup of the orignal design based off the dialogue UI from Animal Crossing</small>_
+
+        Needing to show the video properly meant that this design idea had to be scrapped and a new design that always showed the video player had to be created.
+
+2.  YouTube videos getting taken down
+
+    Unfortunately, a lot of soundtrack videos get taken down, either by the creator themselves, or due to copyright issues - resulting in broken video links on the app. Unfortunately, I haven't found a way to get around this issue, besides choosing videos that have been up for years (and hoping that they stay up) and manually checking periodically for broken video links. Perhaps in the future this process could be automated with tests, or I'll add a "report broken video" button.
+
+3.  Some YouTube videos not being 1 hour long
+
+    Ideally, each video would be 1 hour long or longer, so that users will be able to listen to smoothly looped soundtracks. Unfortunately not all YouTube videos were 1 hour, so I opted for choosing the longest videos and looping them instead.
+
+These issues could be avoided by simply hosting the audio on the app directly but:
+
+1. I wasn't able to directly download the soundtracks from the games myself (and this could also put me at risk for copyright issues).
+2. Downloading the audio from the YouTube video and hosting it on my app doesn't seem ethical. Even though the soundtracks belong to Nintendo, the creators of the video put in effort to extend and loop the soundtracks smoothly. Hosting the audio without giving them the views, or without acknowledging the creators didn't seem right.
+
+### Avoiding copyright issues
+
+When I was planning for this project, I was concerned about the copyright implications of using Animal Crossing's music/assets. Nintendo has been notorious in the past for taking down content due to copyright issues (which is evident with the broken video links that I keep on replacing).
+
+As mentioned previously, I originally had a design based on the game's dialogue UI - which I scrapped in the end. In addition to the shapes used in the UI, I had also used the same colours from the game, to which I replaced with my own colours to avoid copyright.
+
+All the soundtracks themselves are hosted on YouTube and hence, nothing on the app is directly from Animal Crossing themselves.
+
+To avoid further complications, I also opted to use acronyms for all Animal Crossing related names such as the soundtrack names (AC = Animal Crossing, NH = New Horizons, etc.). I was concerned if users would not be able to figure out the acronyms, but I figured that they could try out the options and work out what soundtrack is playing from the YouTube video's title.
+
+## Future features
+
+In the future, I would like to add the following features:
+
+- Ability to able to show/hide the video settings
+- Add additonal sound effects (rain, thunder...)
+- External video controls - play/pause, volume control
+- Increase accessibility - full keyboard control, implement accessibility best practices
+- Add some more Animal Crossing inspired design elements (grass texture as the background)
+
+## Learnings
+
+Overall, I had learnt a lot from this project. I learnt about:
+
+- Using iframe for YouTube embeds
+- YouTube's Terms of Service for use in embedded players
+- Using the OpenMeteo API
+- Github pages deployment with more tham 1 page
+- State management using both localStorage and URL-based states

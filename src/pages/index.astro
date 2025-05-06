@@ -16,7 +16,7 @@ const [socials, workExperience, education, projects] =
         getCollection("socials"),
         getCollection("workExperience"),
         getCollection("education"),
-        getCollection("projects")
+        getCollection("projects", (project) => project.data.draft !== true)
     ]);
 
 const slugify = (string: string): string => {
@@ -71,7 +71,7 @@ const slugify = (string: string): string => {
                 </div>
             <Card class="hover-effect">
                 {
-                    workExperience.map((entry) => (
+                    workExperience.reverse().map((entry) => (
                     <a href={'/work'} style="text-decoration: none; color: inherit;">
                         <div class="card-entry">
                             <div class="card-header">
@@ -117,14 +117,14 @@ const slugify = (string: string): string => {
                 <a href={`/projects`}>See all</a>
             </div>
             {
-                projects.map((entry) => (
+                projects.reverse().map((entry) => (
                     <Card class="hover-effect" style="margin-bottom: 1rem;" onclick=`location.href='/projects/${slugify(entry.data.title)}';`>
                         <div class="card-entry">
                             <div class="project-header">
-                                <div class="project-container" style="flex: 2">
+                                <div class="project-container" style="flex: 3">
                                     <ImageGlow quality={100} class="article-image" src={entry.data.image} alt={entry.data.title} />
                                 </div>
-                                <div class="project-container" style="flex: 1">
+                                <div class="project-container" style="flex: 2">
                                     <h3 class="card-title">
                                         {entry.data.title}
                                     </h3>
@@ -368,7 +368,7 @@ const slugify = (string: string): string => {
         }
 
         .education-card {
-            min-height: 600px;
+            min-height: 325px;
         }
 
         .socials-link {
