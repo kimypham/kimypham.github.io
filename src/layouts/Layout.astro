@@ -6,6 +6,7 @@ import Background from '../components/Background.astro';
 import Navbar from '../components/Navbar.astro';
 import LayoutGrid from '../components/LayoutGrid.astro';
 import { name, themeColor, twitterHandle } from 'spectre:globals';
+import Footer from '../components/Footer.astro';
 
 interface Props {
 	title: string;
@@ -70,7 +71,9 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 			</LayoutGrid>
             <slot name="center" slot="center" />
 			<slot name="404" />
+            
 		</main>
 		<Background />
 	</body>
+    <Footer />
 </html>
