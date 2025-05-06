@@ -20,12 +20,11 @@ export default defineConfig({
             name: "Kim Pham",
             openGraph: {
                 home: {
-                    title: "Spectre",
-                    description: "A minimalistic theme for Astro."
+                    title: "Kim Pham",
+                    description: "The portfolio of Kim Pham"
                 },
                 blog: {
-                    title: "Blog",
-                    description: "News and guides for Spectre."
+                    title: "Blog"
                 },
                 projects: {
                     title: "Projects"
