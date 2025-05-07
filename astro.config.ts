@@ -25,13 +25,16 @@ export default defineConfig({
                     description: "The portfolio of Kim Pham"
                 },
                 blog: {
-                    title: "Blog"
+                    title: "Blog",
+                    description: "Writings, learnings, and ramblings"
                 },
                 projects: {
-                    title: "Projects"
+                    title: "Projects",
+                    description: "Projects I have worked on"
                 },
                 work: {
-                    title: "Work experience"
+                    title: "Work experience",
+                    description: "My work experience"
                 }
             },
             giscus: {

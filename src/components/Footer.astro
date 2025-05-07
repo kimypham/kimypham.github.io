@@ -22,6 +22,7 @@ const socials = await getCollection("socials")
                             <Icon
                                 type={item.data.icon.type}
                                 name={item.data.icon.name as any}
+                                aria-label={item.data.text}
                                 width={25}
                                 height={25}
                                 class="glow-icon"

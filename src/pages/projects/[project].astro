@@ -83,7 +83,9 @@ const { Content, headings } = await render(project);
                 <p class="project-info">{timeToRead(project)} minute{timeToRead(project) === 1 ? "" : "s"} to read</p>
                 
             </div>
-            <Content />
+            <div class="test">
+                <Content />
+            </div>
             <hr class="end-of-article" />
             <a href="/projects" class="block-link" data-pagefind-ignore>← Back to projects</a>
         </Card>
@@ -91,6 +93,9 @@ const { Content, headings } = await render(project);
 </Layout>
 <script src="../../scripts/toc.ts" />
 <style>
+    a {
+        text-decoration: none;;
+    }
     .project-info {
         display: flex;
         flex-direction: row;

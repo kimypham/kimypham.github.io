@@ -68,7 +68,7 @@ const slugify = (string: string): string => {
                     class="glow-icon"
                 />
                 <h2>Projects</h2>
-                <a href={`/projects`}>See all</a>
+                <a href={`/projects`}>See all projects</a>
             </div>
             {
                 projects.reverse().map((entry) => (
@@ -98,7 +98,7 @@ const slugify = (string: string): string => {
                                                     height={24}
                                                     class="glow-icon"
                                                 />
-                                                <span>Read more</span>
+                                                <span>View project details</span>
                                             </div>
                                         </a>
                                         <a href={entry.data.demoLink} style="text-decoration: none;">
@@ -208,6 +208,10 @@ const slugify = (string: string): string => {
     </div>
 </Layout>
 <style>
+    a {
+        text-decoration: none;;
+    }
+
     .center-container {
         display: flex;
         flex-direction: column;
