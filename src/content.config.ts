@@ -76,16 +76,6 @@ const posts = defineCollection({
     })
 });
 
-const workLinks = defineCollection({
-    loader: file("src/content/work-links.json"),
-    schema: z.object({
-        id: z.number(),
-        icon: lucideIconSchema,
-        text: z.string(),
-        link: z.string().url(),
-    })
-});
-
 const workExperience = defineCollection({
     loader: glob({ base: "src/content/workExperience", pattern: "**/*.{md,mdx}" }),
     schema: ({ image }) => z.object({
@@ -127,4 +117,4 @@ const projects = defineCollection({
     })
 });
 
-export const collections = { tags, posts, projects, other, quickInfo, socials, quickWorkExperience, education, workLinks, workExperience };
+export const collections = { tags, posts, projects, other, quickInfo, socials, quickWorkExperience, education, workExperience };
