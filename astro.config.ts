@@ -18,6 +18,7 @@ export default defineConfig({
         sitemap(),
         spectre({
             name: "Kim Pham",
+            themeColor: "#11111b", // #11111b
             openGraph: {
                 home: {
                     title: "Kim Pham",

@@ -114,7 +114,7 @@ const slugify = (string: string): string => {
                                             </div>
                                         </a>
                                         <a href={entry.data.githubLink} style="text-decoration: none;">
-                                            <div class="socials-link" style="background:var(--dark-purple)">
+                                            <div class="socials-link small-socials-link" style="background:var(--dark-purple)">
                                                 <Icon
                                                     type={'lucide'}
                                                     name={'github' as any}
@@ -183,7 +183,7 @@ const slugify = (string: string): string => {
                 <p style="margin-bottom:1rem;">
                     Have a question or want to work together? I would love to hear from you over a virtual coffee chat!
                 </p>
-                <div style="display:flex; align-items:baseline; gap:1rem;">
+                <div class="contact-email-button-container">
                     <div style="font-size:3rem;">
                         ⤷
                     </div>
@@ -205,7 +205,6 @@ const slugify = (string: string): string => {
                 </div>
             </div>
         </div>
-        <!-- <a href="/src/content/assets/Kim_Pham_Resume.pdf">ok</a> -->
     </div>
 </Layout>
 <style>
@@ -336,6 +335,12 @@ const slugify = (string: string): string => {
         margin: 0;
     }
 
+    .contact-email-button-container {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        gap: 1rem;
+    }
     @media screen and (max-width: 1024px) {
         .project-header {
             flex-direction: column;
