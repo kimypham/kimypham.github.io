@@ -25,6 +25,13 @@ hr {
     margin-bottom: 1rem;
 }
 
+.icon-header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
 .header-container * {
     margin: 0;
 }

@@ -46,8 +46,8 @@ const slugify = (string: string): string => {
                                 <Icon
                                     type={item.data.icon.type}
                                     name={item.data.icon.name as any}
-                                    width={24}
-                                    height={24}
+                                    width={25}
+                                    height={25}
                                     class="glow-icon"
                                 />
                                 <span>{item.data.text}</span>
@@ -63,8 +63,8 @@ const slugify = (string: string): string => {
                 <Icon
                     type="lucide"
                     name="sparkles"
-                    width={24}
-                    height={24}
+                    width={25}
+                    height={25}
                     class="glow-icon"
                 />
                 <h2>Projects</h2>
@@ -79,9 +79,18 @@ const slugify = (string: string): string => {
                                     <ImageGlow quality={100} class="article-image" src={entry.data.image} alt={entry.data.title} />
                                 </div>
                                 <div class="project-container" style="flex: 2">
-                                    <h3 class="card-title">
-                                        {entry.data.title}
-                                    </h3>
+                                    <div class="icon-header-container">
+                                        <Icon
+                                            type={entry.data.icon.type}
+                                            name={entry.data.icon.name as any}
+                                            width={25}
+                                            height={25}
+                                            class="glow-icon"
+                                        />
+                                        <h3 class="card-title">
+                                            {entry.data.title}
+                                        </h3>
+                                    </div>
                                     <span class="card-date">
                                         {entry.data.technology}
                                     </span>
@@ -94,8 +103,8 @@ const slugify = (string: string): string => {
                                                 <Icon
                                                     type={'lucide'}
                                                     name={'eye' as any}
-                                                    width={24}
-                                                    height={24}
+                                                    width={25}
+                                                    height={25}
                                                     class="glow-icon"
                                                 />
                                                 <span>View project details</span>
@@ -106,8 +115,8 @@ const slugify = (string: string): string => {
                                                 <Icon
                                                     type={'lucide'}
                                                     name={'play' as any}
-                                                    width={24}
-                                                    height={24}
+                                                    width={25}
+                                                    height={25}
                                                     class="glow-icon"
                                                 />
                                                 <span>Live demo</span>
@@ -118,8 +127,8 @@ const slugify = (string: string): string => {
                                                 <Icon
                                                     type={'lucide'}
                                                     name={'github' as any}
-                                                    width={24}
-                                                    height={24}
+                                                    width={25}
+                                                    height={25}
                                                     class="glow-icon"
                                                 />
                                                 <span>View code</span>
@@ -138,8 +147,8 @@ const slugify = (string: string): string => {
                 <Icon
                     type="lucide"
                     name="graduation-cap"
-                    width={24}
-                    height={24}
+                    width={25}
+                    height={25}
                     class="glow-icon"
                 />
                 <h2>Education</h2>
@@ -192,8 +201,8 @@ const slugify = (string: string): string => {
                             <Icon
                                 type="lucide"
                                 name="mail"
-                                width={24}
-                                height={24}
+                                width={25}
+                                height={25}
                                 class="glow-icon"
                             />
                             <span>Send me an email!</span>

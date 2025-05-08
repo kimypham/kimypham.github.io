@@ -33,8 +33,8 @@ const projects = await getCollection("projects", (project) => project.data.draft
                 <Icon
                     type="lucide"
                     name="folder-git"
-                    width={24}
-                    height={24}
+                    width={25}
+                    height={25}
                     class="glow-icon"
                 />
                 <h2>Latest Projects</h2>
@@ -52,7 +52,18 @@ const projects = await getCollection("projects", (project) => project.data.draft
                                 class="post-container"
                             >
                                 <div class="post-header">
-                                    <h3>{post.data.title}</h3>
+                                    <div class="icon-header-container">
+                                        <Icon
+                                            type={post.data.icon.type}
+                                            name={post.data.icon.name as any}
+                                            width={25}
+                                            height={25}
+                                            class="glow-icon"
+                                        />
+                                        <h3 class="card-title">
+                                            {post.data.title}
+                                        </h3>
+                                    </div>
                                     <span class="post-date">
                                         {post.data.date.toLocaleDateString()}
                                     </span>
