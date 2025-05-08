@@ -2,11 +2,11 @@
 
 # Kim Pham's portfolio 💫
 
-A dark theme starry pastel portfolio, built using TypeScript, CSS and Astro, inspired by Louis Escher's [Spectre theme](https://github.com/louisescher/spectre), and the [cappucin](https://catppuccin.com/) colour scheme .
+![Portfolio promotion picture](https://github.com/kimypham/kimypham.github.io/blob/main/src/content/assets/portfolio.png)
+
+A dark theme starry pastel portfolio, built using TypeScript, CSS and Astro, inspired by Louis Escher's [Spectre theme](https://github.com/louisescher/spectre), and the [cappucin](https://catppuccin.com/) colour scheme.
 
 Live demo! ➡️ https://kimypham.github.io
-
-![Portfolio promotion picture](https://github.com/kimypham/kimypham.github.io/blob/main/src/content/assets/portfolio.png)
 
 </div>
 
