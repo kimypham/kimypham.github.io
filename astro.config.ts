@@ -46,7 +46,8 @@ export default defineConfig({
                 strict: true,
                 reactionsEnabled: true,
                 emitMetadata: false,
-                lang: "en"
+                lang: "en",
+                theme: "catppuccin_mocha"
             }
         })
     ]

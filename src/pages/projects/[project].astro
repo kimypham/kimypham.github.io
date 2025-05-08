@@ -8,6 +8,7 @@ import Layout from '../../layouts/Layout.astro';
 import type { GetStaticPaths } from 'astro';
 import type { CollectionEntry } from 'astro:content';
 import { getCollection, render } from 'astro:content';
+import { giscus } from 'spectre:globals';
 import { timeToRead } from '../../common/service.astro';
 import Icon from '../../components/Icon.astro';
 import ImageGlow from '../../components/ImageGlow.astro';
@@ -89,6 +90,29 @@ const { Content, headings } = await render(project);
             <hr class="end-of-article" />
             <a href="/projects" class="block-link" data-pagefind-ignore>← Back to projects</a>
         </Card>
+        {giscus && (
+            <Card>
+              <div class="comments" data-pagefind-ignore>
+                <script
+                  is:inline
+                  src="https://giscus.app/client.js"
+                  data-repo={giscus.repository}
+                  data-repo-id={giscus.repositoryId}
+                  data-category={giscus.category}
+                  data-category-id={giscus.categoryId}
+                  data-mapping={giscus.mapping}
+                  data-strict={giscus.strict === true ? "1" : "0"}
+                  data-reactions-enabled={giscus.reactionsEnabled === true ? "1" : "0"}
+                  data-emit-metadata={giscus.emitMetadata === true ? "1" : "0"}
+                  data-input-position={giscus.commentsInput}
+                  data-lang={giscus.lang}
+                  data-loading="lazy"
+                  crossorigin="anonymous"
+                  async
+                />
+              </div>
+            </Card>
+          )}
     </article>
 </Layout>
 <script src="../../scripts/toc.ts" />

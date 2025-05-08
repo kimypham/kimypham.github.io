@@ -1,10 +1,28 @@
+<div align="center">
+
 # Kim Pham's portfolio 💫
 
-This portfolio was built using TypeScript and Astro, inspired by Louis Escher's [Spectre theme](https://github.com/louisescher/spectre).
+A dark theme starry pastel portfolio, built using TypeScript, CSS and Astro, inspired by Louis Escher's [Spectre theme](https://github.com/louisescher/spectre), and the [cappucin](https://catppuccin.com/) colour scheme .
 
 Live demo! ➡️ https://kimypham.github.io
 
-## 🚀 Getting Started
+![Portfolio promotion picture](https://github.com/kimypham/kimypham.github.io/blob/main/src/content/assets/portfolio.png)
+
+</div>
+
+## Features
+
+- Built on top of the existing template with custom styling, a twinkling starry background, new home page, work page and footer
+- Responsive for all screen sizes
+- Fully accessible
+- Type-Safe
+- Auto-generated sitemap
+- Markdown / MDX Support
+- Builds on content collections
+- Search powered by [pagefind](https://pagefind.app)
+- Comments powered by [giscus](https://giscus.app)
+
+## Getting Started
 
 1. Clone the repo:
 
@@ -24,15 +42,3 @@ yarn install
 ```
 yarn dev
 ```
-
-## ✨ Features
-
-- 100 / 100 Lighthouse performance
-- Responsive for all screen sizes
-- Fully accessible
-- Type-Safe
-- Auto-generated sitemap
-- Markdown / MDX Support
-- Builds on content collections
-- Search powered by [pagefind](https://pagefind.app)
-- Comments powered by [giscus](https://giscus.app)
