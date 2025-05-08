@@ -107,6 +107,7 @@ const projects = defineCollection({
         githubLink: z.string().url().optional(),
         icon: lucideIconSchema,
         draft: z.boolean().optional().default(false),
+        featuredOrder: z.number().optional(),
         info: z.array(
             z.object({
                 text: z.string(),

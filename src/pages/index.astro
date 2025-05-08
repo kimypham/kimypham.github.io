@@ -12,12 +12,14 @@ import Layout from '../layouts/Layout.astro';
 import ImageGlow from '../components/ImageGlow.astro';
 import HomePageWorkSection from '../components/HomePageWorkSection.astro';
 
-const [socials, education, projects] =
+const [socials, education, rawProjects] =
     await Promise.all([
         getCollection("socials"),
         getCollection("education"),
-        getCollection("projects", (project) => project.data.draft !== true)
+        getCollection("projects", (project) => project.data.draft !== true && project.data.featuredOrder)
     ]);
+
+const projects = rawProjects.sort((a, b) => (a.data.featuredOrder ?? 0) - (b.data.featuredOrder ?? 0));
 
 const slugify = (string: string): string => {
     return string
@@ -71,7 +73,7 @@ const slugify = (string: string): string => {
                 <a href={`/projects`}>See all projects</a>
             </div>
             {
-                projects.reverse().map((entry) => (
+                projects.map((entry) => (
                     <Card class="hover-effect" style="margin-bottom: 1rem;" onclick=`location.href='/projects/${slugify(entry.data.title)}';`>
                         <div class="card-entry">
                             <div class="project-header">
